@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import { ToastContainer, toast } from 'react-toastify';
-import { Navigate, useNavigate } from "react-router-dom";
 
 function Signup(props) {
-  let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: "",
     userName: "",
@@ -49,16 +47,7 @@ function Signup(props) {
     }
     
     // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWJmNGQ3NmYyNTJmYWY3NzhiZWMwMCIsImlhdCI6MTcyMTQ5Njc5MSwiZXhwIjoxNzI0MDg4NzkxfQ.WCvbb2YCXPk_-ddoJstQhz6wN8XaA3G2enNO7PZt9ZI"
-    // {
-    //   "username": "testcus",
-    //   "password": "Test@1234",
-    //   "email": "cust@gmail.com",
-    //   "name": "Test Customer",
-    //   "phone_number": "+911112223335",
-    //   "role": "CUSTOMER"
-    // }
-    // console.log(response.json());
-    // navigate("/dashboard");
+   
   };
   return (
     <div className="sign-in-wrapper">

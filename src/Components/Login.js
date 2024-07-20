@@ -1,7 +1,9 @@
 import "./styles/login.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 function Login(props) {
   const [credentials, setCredentials] = useState({
@@ -31,11 +33,12 @@ function Login(props) {
     let json = await response.json();
     console.log(json);
     if (json.message === "User login successful.") {
+      toast.success("logged in successfully!!")
       localStorage.setItem("userName", credentials.userName);
       localStorage.setItem("authToken", json.data.access_token);
       setTimeout(()=>(navigate("/dashboard")),4000);
     } else {
-      toast.error("enter valid credentials");
+      toast.error("enter valid credentials!")
     }
   };
   // {
