@@ -7,17 +7,17 @@ function Authpage() {
   const handleLoginPage = () => toggleShowLogin(!showLogin);
 
   return (
-    <div className="rounded-md border-2 border-black border-solid flex  justify-center relative bg-green-400 align-middle cursor-default h-full w-full ">
-      <div className=" align-middle absolute items-center border-2 border-red-500 border-solid flex flex-col w-1/2 bg-sky-100 ">
-        <div className="flex flex-row m-2 text-3xl bg-white ">
+    <div className="flex items-center justify-center rounded-md border-2 border-black border-solid relative bg-green-400 align-middle cursor-default h-screen w-screen ">
+      <div className=" align-middle absolute items-center border-2 flex flex-col w-1/2 bg-sky-100 ">
+        <div className="w-full flex flex-row justify-evenly text-3xl text-center bg-white ">
           <div
-            className={`${showLogin ? "bg-inherit" : "bg-sky-700 text-white"}`}
+            className={`${showLogin ? "bg-inherit" : "bg-sky-700 text-white"} border-gray-700 border-r-4 border-solid w-full p-2`}
             onClick={handleLoginPage}
           >
             Log in
           </div>
           <div
-            className={`${!showLogin ? "bg-inherit" : "bg-sky-700 text-white"}`}
+            className={`${!showLogin ? "bg-inherit" : "bg-sky-700 text-white"} w-full p-2`}
             onClick={handleLoginPage}
           >
             Sign up
