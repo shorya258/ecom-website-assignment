@@ -7,7 +7,7 @@ function Dashboard() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        access_token: localStorage.getItem("authToken"),
+         "Authorization": "Bearer "+localStorage.getItem("authToken"),
       },
       body: JSON.stringify({
         status: "PENDING",
@@ -18,11 +18,7 @@ function Dashboard() {
     let json = await response.json();
     console.log(json);
     console.log(json.data);
-    if (json.message === "User registered successfully.") {
-      console.log("SUCCESSFUL FETCH");
-    } else {
-      alert("enter valid credentials");
-    }
+    return json.data;
   };
   useEffect(() => {
     fetchOrders();

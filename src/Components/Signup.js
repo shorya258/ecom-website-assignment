@@ -40,9 +40,9 @@ function Signup(props) {
     console.log(json.data.access_token)
     if (json.message==="User registered successfully.") {
       toast.success("User registered successfully.");
-      localStorage.setItem("userEmail", credentials.userName);
+      localStorage.setItem("userName", credentials.userName);
       localStorage.setItem("authToken", json.data.access_token);
-      setTimeout(()=>(navigate("/login")),4000);
+      setTimeout(()=>(props.handleLoginPage()),4000);
     }
     else{
       toast.error("enter valid credentials");
