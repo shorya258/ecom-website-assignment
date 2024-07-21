@@ -73,8 +73,6 @@ function Signup(props) {
     } else {
       toast.error("enter valid credentials");
     }
-
-    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWJmNGQ3NmYyNTJmYWY3NzhiZWMwMCIsImlhdCI6MTcyMTQ5Njc5MSwiZXhwIjoxNzI0MDg4NzkxfQ.WCvbb2YCXPk_-ddoJstQhz6wN8XaA3G2enNO7PZt9ZI"
   };
   return (
     <div className="flex flex-col ">
