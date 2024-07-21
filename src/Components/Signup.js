@@ -82,7 +82,7 @@ function Signup(props) {
       <div className="align-middle justify-evenly items-center ">
         <div className="text-2xl">Register</div>
       </div>
-      <div className="mt-3 sign-in-form-wrapper flex flex-col content-wrapper p-3">
+      <div className="mt-3 sign-in-form-wrapper flex flex-col content-wrapper p-3 z-0">
         <form className="flex flex-col" >
           <div className="flex flex-col gap-x-6 gap-y-3 mb-3">
             {/* row 1 */}
@@ -190,7 +190,7 @@ function Signup(props) {
               </div>
             </div>
             {/* DROPDOWN */}
-            <div>
+            <div className="flex justify-between z-0 relative" >
               <div
                 onClick={() => toggleDropdown(!openDropdown)}
                 className="z-0 lock text-sm font-medium leading-6 text-gray-900"
@@ -207,11 +207,11 @@ function Signup(props) {
                 )}
               </div>
               {openDropdown && (
-                <div className="w-23 m-2 p-2 border-2 border-black border-solid rounded-md z-10 ">
+                <div className="w-22 p-1 m-1 z-10 top-[15px] left-[25px] grid grid-cols-1 divide-y-4 absolute shadow-2xl ">
                   <div
                     value={credentials.role}
                     onClick={() => handleDropDown("CUSTOMER")}
-                    className="my-1"
+                    className="my-1  "
                   >
                     customer
                   </div>
