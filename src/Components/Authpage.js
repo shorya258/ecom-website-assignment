@@ -23,7 +23,7 @@ function Authpage() {
             Sign up
           </div>
         </div>
-        <div className="border-2 border-red-500 border-solid m-4 p-5 rounded-2xl bg-white">
+        <div className="border-2 border-red-500 border-solid m-4 p-5 rounded-2xl bg-white ">
           {showLogin ? (
             <Login handleLoginPage={handleLoginPage} />
           ) : (

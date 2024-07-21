@@ -77,73 +77,99 @@ function Signup(props) {
     // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWJmNGQ3NmYyNTJmYWY3NzhiZWMwMCIsImlhdCI6MTcyMTQ5Njc5MSwiZXhwIjoxNzI0MDg4NzkxfQ.WCvbb2YCXPk_-ddoJstQhz6wN8XaA3G2enNO7PZt9ZI"
   };
   return (
-    <div className="sign-in-wrapper">
+    <div className="flex flex-col ">
       <ToastContainer />
-      <div className="sign-in-header">
-        <h1 className="text-2xl">Register</h1>
+      <div className="align-middle justify-evenly items-center ">
+        <div className="text-2xl">Register</div>
       </div>
       <div className="mt-3 sign-in-form-wrapper flex flex-col content-wrapper p-3">
-        <form>
-          <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-6 mb-3">
-            {/* USER NAME */}
-            <div className="sm:col-span-6">
-              <label
-                htmlFor="userName"
-                className="sign-in-label block text-sm font-medium leading-6 text-gray-900"
-              >
-                User Name
-              </label>
-              <div className="sign-in-input mt-2">
-                <input
-                  type="text"
-                  name="userName"
-                  onChange={onChange}
-                  value={credentials.userName}
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="User Name"
-                />
+        <form className="flex flex-col" >
+          <div className="flex flex-col gap-x-6 gap-y-3 mb-3">
+            {/* row 1 */}
+            <div className="flex flex-row">
+              {/* USER NAME */}
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="userName"
+                  className="sign-in-label block text-sm font-medium leading-6 text-gray-900"
+                >
+                  User Name
+                </label>
+                <div className="sign-in-input mt-2">
+                  <input
+                    type="text"
+                    name="userName"
+                    onChange={onChange}
+                    value={credentials.userName}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="User Name"
+                  />
+                </div>
+              </div>
+              {/* FULL NAME */}
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="name"
+                  className="sign-in-label block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Full Name
+                </label>
+                <div className="sign-in-input mt-2">
+                  <input
+                    type="text"
+                    name="name"
+                    onChange={onChange}
+                    value={credentials.name}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="Full Name"
+                  />
+                </div>
               </div>
             </div>
-            {/* FULL NAME */}
-            <div className="sm:col-span-6">
-              <label
-                htmlFor="name"
-                className="sign-in-label block text-sm font-medium leading-6 text-gray-900"
-              >
-                Full Name
-              </label>
-              <div className="sign-in-input mt-2">
-                <input
-                  type="text"
-                  name="name"
-                  onChange={onChange}
-                  value={credentials.name}
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="Full Name"
-                />
+            {/* row 2 */}
+            <div className="flex flex-row">
+              {/* EMAIL */}
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="email"
+                  className="sign-in-label block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Email
+                </label>
+                <div className="sign-in-input mt-2">
+                  <input
+                    type="text"
+                    name="email"
+                    onChange={onChange}
+                    value={credentials.email}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="name@email.com"
+                  />
+                </div>
+              </div>
+              {/* PASSWORD */}
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="password"
+                  className="sign-in-label block text-sm font-medium leading-6"
+                >
+                  Password
+                </label>
+                <div className="sign-in-input mt-2">
+                  <input
+                    type="password"
+                    name="password"
+                    onChange={onChange}
+                    value={credentials.password}
+                    autoComplete="password"
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="password"
+                  />
+                </div>
               </div>
             </div>
-
-            {/* EMAIL */}
-            <div className="sm:col-span-6">
-              <label
-                htmlFor="email"
-                className="sign-in-label block text-sm font-medium leading-6 text-gray-900"
-              >
-                Email
-              </label>
-              <div className="sign-in-input mt-2">
-                <input
-                  type="text"
-                  name="email"
-                  onChange={onChange}
-                  value={credentials.email}
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="name@email.com"
-                />
-              </div>
-            </div>
-
+          </div>
+          <div className="flex flex-row">
             {/* PHONE NUMBER */}
             <div className="sm:col-span-6">
               <label
@@ -163,60 +189,43 @@ function Signup(props) {
                 />
               </div>
             </div>
-
-            {/* PASSWORD */}
-            <div className="sm:col-span-6">
-              <label
-                htmlFor="password"
-                className="sign-in-label block text-sm font-medium leading-6"
+            {/* DROPDOWN */}
+            <div>
+              <div
+                onClick={() => toggleDropdown(!openDropdown)}
+                className="z-0 lock text-sm font-medium leading-6 text-gray-900"
               >
-                Password
-              </label>
-              <div className="sign-in-input mt-2">
-                <input
-                  type="password"
-                  name="password"
-                  onChange={onChange}
-                  value={credentials.password}
-                  autoComplete="password"
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="password"
-                />
+                {credentials.role.length ? (
+                  <span>{credentials.role.toLocaleLowerCase()}</span>
+                ) : (
+                  <span>Role</span>
+                )}
+                {!openDropdown ? (
+                  <FontAwesomeIcon icon={faAngleDown} />
+                ) : (
+                  <FontAwesomeIcon icon={faAngleUp} />
+                )}
               </div>
+              {openDropdown && (
+                <div className="w-23 m-2 p-2 border-2 border-black border-solid rounded-md z-10 ">
+                  <div
+                    value={credentials.role}
+                    onClick={() => handleDropDown("CUSTOMER")}
+                    className="my-1"
+                  >
+                    customer
+                  </div>
+                  <div
+                    value={credentials.role}
+                    onClick={() => handleDropDown("RESTAURANT")}
+                  >
+                    restaurant
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-          {/* DROPDOWN */}
-          <div>
-            <div onClick={() => toggleDropdown(!openDropdown)} className="z-0" >
-              {credentials.role.length ? (
-                <span>{credentials.role.toLocaleLowerCase()}</span>
-              ) : (
-                <span>Role</span>
-              )}
-              {!openDropdown ? (
-                <FontAwesomeIcon icon={faAngleDown} />
-              ) : (
-                <FontAwesomeIcon icon={faAngleUp} />
-              )}
-            </div>
-            {openDropdown && (
-              <div className="w-23 m-2 p-2 border-2 border-black border-solid rounded-md z-10 ">
-                <div
-                  value={credentials.role}
-                  onClick={() => handleDropDown("CUSTOMER")}
-                  className="my-1"
-                >
-                  customer
-                </div>
-                <div
-                  value={credentials.role}
-                  onClick={() => handleDropDown("RESTAURANT")}
-                >
-                  restaurant
-                </div>
-              </div>
-            )}
-          </div>
+          <div className=" justify-center " >
           <button
             type="submit"
             className="sign-in-btn rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black mt-2"
@@ -224,14 +233,10 @@ function Signup(props) {
           >
             Submit
           </button>
-          {/* {showAccountCreated && (
-            <div>
-              <p>Account Created!</p>
-            </div>
-          )} */}
+          </div>
         </form>
       </div>
-      <div className="sign-up-link">
+      <div className="sign-up-link align-middle ">
         <p>Already have an account?</p>
         <button onClick={props.handleLoginPage} style={{ cursor: "pointer" }}>
           {" "}
