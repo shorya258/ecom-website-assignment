@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Dropdown from "./Dropdown";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 function Signup(props) {
   const [credentials, setCredentials] = useState({
@@ -11,11 +12,39 @@ function Signup(props) {
     password: "",
     role: "",
   });
+  const [openDropdown, toggleDropdown] = useState(false);
+  const handleDropDown = (setRole) => {
+    setCredentials((prevCredentials) => ({
+      ...prevCredentials,
+      role: setRole,
+    }));
+    toggleDropdown(false);
+  };
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+  const validateInputs = (credentials) => {
+    let errorsObj = {};
+    let errorFound = false;
+    if (credentials.name?.length === 0) {
+      errorFound = true;
+      errorsObj.name = "name can not be empty";
+    } else if (credentials.name?.length <= 4) {
+      errorFound = true;
+      errorsObj.name = "name should contain at least 4 letters";
+    }
+    if (credentials.userName?.length === 0) {
+      errorFound = true;
+      errorsObj.userName = "username can not be empty";
+    } else if (credentials.userName?.length <= 4) {
+      errorFound = true;
+      errorsObj.userName = "name should contain at least 4 letters";
+    }
+    return errorFound;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // validateInputs(credentials)
     let url = "https://test-api.achilyon.in/v1/rest-auth/register";
     let options = {
       method: "POST",
@@ -32,26 +61,24 @@ function Signup(props) {
       }),
     };
     const response = await fetch(url, options);
-    let json= await response.json();
-    console.log(json)
-    console.log(json.data)
-    console.log(json.data.access_token)
-    if (json.message==="User registered successfully.") {
+    let json = await response.json();
+    console.log(json);
+    console.log(json.data);
+    console.log(json.data.access_token);
+    if (json.message === "User registered successfully.") {
       toast.success("User registered successfully.");
       localStorage.setItem("userName", credentials.userName);
       localStorage.setItem("authToken", json.data.access_token);
-      setTimeout(()=>(props.handleLoginPage()),4000);
-    }
-    else{
+      setTimeout(() => props.handleLoginPage(), 4000);
+    } else {
       toast.error("enter valid credentials");
     }
-    
+
     // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OWJmNGQ3NmYyNTJmYWY3NzhiZWMwMCIsImlhdCI6MTcyMTQ5Njc5MSwiZXhwIjoxNzI0MDg4NzkxfQ.WCvbb2YCXPk_-ddoJstQhz6wN8XaA3G2enNO7PZt9ZI"
-   
   };
   return (
     <div className="sign-in-wrapper">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="sign-in-header">
         <h1 className="text-2xl">Register</h1>
       </div>
@@ -160,14 +187,35 @@ function Signup(props) {
           </div>
           {/* DROPDOWN */}
           <div>
-            <label htmlFor="role">Role:</label>
-            <input
-              type="text"
-              name="role"
-              onChange={onChange}
-              value={credentials.role}
-            />
-            <Dropdown />
+            <div onClick={() => toggleDropdown(!openDropdown)} className="z-0" >
+              {credentials.role.length ? (
+                <span>{credentials.role.toLocaleLowerCase()}</span>
+              ) : (
+                <span>Role</span>
+              )}
+              {!openDropdown ? (
+                <FontAwesomeIcon icon={faAngleDown} />
+              ) : (
+                <FontAwesomeIcon icon={faAngleUp} />
+              )}
+            </div>
+            {openDropdown && (
+              <div className="w-23 m-2 p-2 border-2 border-black border-solid rounded-md z-10 ">
+                <div
+                  value={credentials.role}
+                  onClick={() => handleDropDown("CUSTOMER")}
+                  className="my-1"
+                >
+                  customer
+                </div>
+                <div
+                  value={credentials.role}
+                  onClick={() => handleDropDown("RESTAURANT")}
+                >
+                  restaurant
+                </div>
+              </div>
+            )}
           </div>
           <button
             type="submit"
