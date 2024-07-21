@@ -1,4 +1,9 @@
+import { faHourglassHalf } from "@fortawesome/free-regular-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import Modal from "./Modal";
+import OrderCard from "./OrderCard";
 
 function Dashboard() {
   const [orders, setOrders] = useState([]);
@@ -11,7 +16,6 @@ function Dashboard() {
         Authorization: "Bearer " + localStorage.getItem("authToken"),
       },
       body: JSON.stringify({
-        status: "PENDING",
         is_cash: true,
       }),
     };
@@ -21,24 +25,30 @@ function Dashboard() {
     console.log(json.data);
     setOrders(json.data);
   };
+  const [bgGray, toggleBgGray] = useState(false);
+  const handleBackground = () => {
+    toggleBgGray(!bgGray);
+  };
   useEffect(() => {
     fetchOrders();
   }, []);
 
   return (
-    <div>
-      Dashboard
-      <div className="flex gap-2 flex-wrap ">
-        {orders.map((order) => {
+    <div
+      className={`${
+        bgGray && "fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+      }`}
+    >
+      <h2 className={`text-3xl font-bold p-1 `}>Dashboard</h2>
+      <div className={`flex gap-2 flex-wrap justify-center  `}>
+        {orders.map((order, key) => {
           return (
-            <div className=" border-gray-500 rounded-md  border-2 border-solid flex flex-col p-4 ">
-              <h2>{order.created_by.name}</h2>
-              <p>Cancelled : {order.is_cash ? "YES" : "NO"}</p>
-              <p>Cash : {order.is_cash ? "YES" : "NO"}</p>
-              <p>Created : {order.created_at}</p>
-              <p>Status : {order.status}</p>
-              <p>Order Version : {order.order_version}</p>
-            </div>
+            <OrderCard
+              key={key}
+              order={order}
+              handleBackground={handleBackground}
+              bgGray={bgGray}
+            />
           );
         })}
       </div>
