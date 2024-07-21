@@ -1,7 +1,6 @@
 import React from 'react'
 
 function FoodItemCard(props) {
-    console.log(props.menuItem)
   return (
     <div className='w-[200px]' >
         <img src={props.menuItem.imageId} alt='food item' className='w-[50px]' />
