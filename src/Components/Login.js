@@ -22,6 +22,7 @@ function Login(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Origin':'*',
         "access_token":localStorage.getItem("authToken")
       },
       body: JSON.stringify({
